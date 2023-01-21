@@ -1,0 +1,21 @@
+/* ------------------- HEADER ------------------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1160px;
+}
+
+/* ------------------- HOME ------------------- */
+
+/* Bannière prinicpale  */
+
+.banner-img {
+  height: 590px;
+  width: 1450px;
+  object-fit: cover;
+}
