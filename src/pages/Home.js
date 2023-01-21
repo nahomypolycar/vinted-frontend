@@ -13,7 +13,7 @@ const Home = () => {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offers"
         );
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -33,7 +33,19 @@ const Home = () => {
         className="banner-img"
       />
       <div>
-        <h2>{data.offers.product_name}</h2>
+        <h2>
+          {data.offers.map((element, index) => {
+            console.log("element =>", element.owner);
+            return (
+              <div>
+                <div>
+                  <p>{element.owner.account.username}</p>
+                  <h2>{element.product_name}</h2>
+                </div>
+              </div>
+            );
+          })}
+        </h2>
       </div>
     </div>
   );
