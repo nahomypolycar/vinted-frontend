@@ -4,24 +4,32 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Home = () => {
-  const [data, setdata] = useState(null);
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(async () => {
-    const fetchdata = async () => {
-      const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
-      );
-      console.log(response.data);
-      setdata(response.data);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://lereacteur-vinted-api.herokuapp.com/offers"
+        );
+        console.log(response.data);
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.response);
+      }
     };
-    fetchdata();
+    fetchData();
   }, []);
 
-  return (
+  return isLoading ? (
+    <span>En cours de chargement ...</span>
+  ) : (
     <div className="banner">
       <img
         src={banner}
-        alt="image de la bannière principale coupe qui plie des vêtements"
+        alt="ibannière principale couple qui plie des vêtements"
         className="banner-img"
       />
       <div></div>
