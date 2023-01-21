@@ -32,7 +32,9 @@ const Home = () => {
         alt="ibannière principale couple qui plie des vêtements"
         className="banner-img"
       />
-      <div></div>
+      <div>
+        <h2>{data.offers.product_name}</h2>
+      </div>
     </div>
   );
 };
