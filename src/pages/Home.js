@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Home = () => {
-  const [data, setData] = useState(null);
+  const [offers, setOffers] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Home = () => {
           "https://lereacteur-vinted-api.herokuapp.com/offers"
         );
         // console.log(response.data);
-        setData(response.data);
+        setOffers(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -29,23 +29,53 @@ const Home = () => {
     <div className="banner">
       <img
         src={banner}
-        alt="ibannière principale couple qui plie des vêtements"
+        alt="bannière principale couple qui plie des vêtements"
         className="banner-img"
       />
-      <div>
-        <h2>
-          {data.offers.map((element, index) => {
-            console.log("element =>", element.owner);
+      <div className="container">
+        <div className="offersList">
+          {offers.offers.map((data, index) => {
             return (
-              <div>
+              <Link
+                to={"/offer/" + data._id}
+                key={data._id}
+                style={{ textDecoration: "none", color: "black" }}
+              >
                 <div>
-                  <p>{element.owner.account.username}</p>
-                  <h2>{element.product_name}</h2>
+                  {/* <img
+                    src={data.owner.account.avatar.secure_url}
+                    alt="the product to sell"
+                  /> */}
+                  {data.owner && <p>{data.owner.account.username}</p>}
                 </div>
-              </div>
+                <div className="productDetails">
+                  {data.product_image.secure_url && (
+                    <img
+                      src={data.product_image.secure_url}
+                      alt="Présentation principale du produit"
+                    ></img>
+                  )}
+
+                  {data.product_price && <p>{data.product_price} €</p>}
+                  {data.product_details.map((productInfos, index) => {
+                    return (
+                      productInfos.TAILLE && (
+                        <p key={index}>{productInfos.TAILLE}</p>
+                      )
+                    );
+                  })}
+                  {data.product_details.map((productInfos, index) => {
+                    return (
+                      productInfos.MARQUE && (
+                        <p key={index}>{productInfos.MARQUE}</p>
+                      )
+                    );
+                  })}
+                </div>
+              </Link>
             );
           })}
-        </h2>
+        </div>
       </div>
     </div>
   );

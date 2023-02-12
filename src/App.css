@@ -3,11 +3,12 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .container {
   margin: 0 auto;
-  width: 1160px;
+  width: 1230px;
 }
 
 /* ------------------- HOME ------------------- */
@@ -16,6 +17,114 @@
 
 .banner-img {
   height: 590px;
-  width: 1450px;
+  width: 100%;
   object-fit: cover;
+}
+
+/* Annonces  */
+
+.userInfo {
+  display: flex;
+  gap: 10px;
+  width: 235px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.userInfo img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.productDetails img {
+  width: 235px;
+  height: 360px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.productOffer {
+  gap: 10px;
+  height: 100%;
+  margin-right: 10px;
+  margin-bottom: 35px;
+  margin-top: 40px;
+}
+
+.offersList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ------------------- Offre page indiv ------------------- */
+
+.productImgInfos {
+  display: flex;
+  gap: 225px;
+}
+
+.productImgs > img {
+  height: 600px;
+  width: 455px;
+  object-fit: cover;
+}
+
+.price {
+  font-size: 24px;
+}
+
+.productInfos {
+  background-color: bisque;
+  display: flex;
+  justify-content: space-between;
+
+  gap: 100px;
+}
+
+.productKeys {
+  background-color: green;
+  display: block;
+  width: 50%;
+}
+
+.productInfos :last-child {
+  background-color: aqua;
+  width: 50%;
+  margin-left: 50px;
+}
+
+.topDetails {
+  margin-top: 30px;
+  margin-bottom: 48px;
+  padding-bottom: 50px;
+  border-bottom: black 1px solid;
+}
+
+.bottomDetails h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.bottomDetails p {
+  margin-bottom: 20px;
+}
+
+.bottomDetails img {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+.bottomDetails {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+}
+
+.button {
+  height: 35px;
+  width: 100%;
 }
